@@ -118,5 +118,14 @@ namespace part_8
                                 borderWidth,
                                 borderStyle = ButtonBorderStyle.Inset); //bottom side
         }
+
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
     }
 }

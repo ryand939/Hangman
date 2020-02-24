@@ -75,6 +75,7 @@
             this.label1.Size = new System.Drawing.Size(332, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Part 8 ICS4U: Hangman";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             // 
             // Form1
             // 
