@@ -86,5 +86,37 @@ namespace part_8
                                 borderWidth,
                                 borderStyle = ButtonBorderStyle.Inset); //bottom side
         }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+
+            var borderStyle = ButtonBorderStyle.Outset;
+            var borderWidth = 2;
+            var borderColor = Color.Black;
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                e.ClipRectangle,
+                                borderColor,
+                                borderWidth,
+                                borderStyle,
+                                borderColor,
+                                borderWidth,
+                                borderStyle,
+                                borderColor,
+                                borderWidth,
+                                borderStyle = ButtonBorderStyle.Inset, //right side
+                                borderColor,
+                                borderWidth,
+                                borderStyle = ButtonBorderStyle.Inset); //bottom side
+        }
     }
 }
