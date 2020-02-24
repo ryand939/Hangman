@@ -30,7 +30,9 @@
         {
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGameTitle = new System.Windows.Forms.Label();
+            this.txtUserEntry = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,18 +66,43 @@
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // label1
+            // lblGameTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(357, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Part 8 ICS4U: Hangman";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
+            this.lblGameTitle.AutoSize = true;
+            this.lblGameTitle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameTitle.ForeColor = System.Drawing.Color.Silver;
+            this.lblGameTitle.Location = new System.Drawing.Point(358, 22);
+            this.lblGameTitle.Name = "lblGameTitle";
+            this.lblGameTitle.Size = new System.Drawing.Size(332, 29);
+            this.lblGameTitle.TabIndex = 2;
+            this.lblGameTitle.Text = "Part 8 ICS4U: Hangman";
+            this.lblGameTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
+            this.lblGameTitle.MouseEnter += new System.EventHandler(this.lblGameTitle_MouseEnter);
+            this.lblGameTitle.MouseLeave += new System.EventHandler(this.lblGameTitle_MouseLeave);
+            // 
+            // txtUserEntry
+            // 
+            this.txtUserEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserEntry.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserEntry.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtUserEntry.Location = new System.Drawing.Point(699, 78);
+            this.txtUserEntry.MaxLength = 1;
+            this.txtUserEntry.Name = "txtUserEntry";
+            this.txtUserEntry.Size = new System.Drawing.Size(84, 42);
+            this.txtUserEntry.TabIndex = 3;
+            this.txtUserEntry.MouseEnter += new System.EventHandler(this.txtUserEntry_MouseEnter);
+            this.txtUserEntry.MouseLeave += new System.EventHandler(this.txtUserEntry_MouseLeave);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(363, 78);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(165, 264);
+            this.listBox1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -83,7 +110,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.txtUserEntry);
+            this.Controls.Add(this.lblGameTitle);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -101,7 +130,9 @@
 
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGameTitle;
+        private System.Windows.Forms.TextBox txtUserEntry;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

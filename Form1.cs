@@ -45,7 +45,7 @@ namespace part_8
 
             ControlPaint.DrawBorder(
                                 e.Graphics,
-                                e.ClipRectangle,
+                                new Rectangle(0,0,this.Width,this.Height),
                                 borderColor,
                                 borderWidth,
                                 borderStyle,
@@ -67,24 +67,25 @@ namespace part_8
 
         private void btnExit_Paint(object sender, PaintEventArgs e)
         {
-            var borderStyle = ButtonBorderStyle.Outset;
-            var borderWidth = 2; //defaulth
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
             var borderColor = Color.Black;
             ControlPaint.DrawBorder(
                                 e.Graphics,
-                                e.ClipRectangle,
-                                borderColor,
+                                new Rectangle(Location.X, Location.Y, this.Width, this.Height),
+                                borderColor,//left
                                 borderWidth,
-                                borderStyle,
-                                borderColor,
+                                borderStyleTopLeft,
+                                borderColor,//top
                                 borderWidth,
-                                borderStyle,
-                                borderColor,
+                                borderStyleTopLeft,
+                                borderColor,//right
                                 borderWidth,
-                                borderStyle = ButtonBorderStyle.Inset, //right side
-                                borderColor,
+                                borderStyleBottomRight,
+                                borderColor,//left
                                 borderWidth,
-                                borderStyle = ButtonBorderStyle.Inset); //bottom side
+                                borderStyleBottomRight);
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -126,6 +127,30 @@ namespace part_8
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        
+
+        private void lblGameTitle_MouseLeave(object sender, EventArgs e)
+        {
+
+            lblGameTitle.ForeColor = Color.Silver;
+        }
+
+        private void lblGameTitle_MouseEnter(object sender, EventArgs e)
+        {
+
+            lblGameTitle.ForeColor = Color.DarkGray;
+        }
+
+        private void txtUserEntry_MouseEnter(object sender, EventArgs e)
+        {
+            txtUserEntry.ForeColor = Color.Silver;
+        }
+
+        private void txtUserEntry_MouseLeave(object sender, EventArgs e)
+        {
+            txtUserEntry.ForeColor = Color.DarkGray;
         }
     }
 }
