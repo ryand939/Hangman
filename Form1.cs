@@ -68,7 +68,7 @@ namespace part_8
         private void btnExit_Paint(object sender, PaintEventArgs e)
         {
             var borderStyle = ButtonBorderStyle.Outset;
-            var borderWidth = 2; //default
+            var borderWidth = 2; //defaulth
             var borderColor = Color.Black;
             ControlPaint.DrawBorder(
                                 e.Graphics,
