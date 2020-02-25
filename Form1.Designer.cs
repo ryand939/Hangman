@@ -87,7 +87,7 @@
             this.txtUserEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserEntry.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserEntry.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtUserEntry.Location = new System.Drawing.Point(699, 78);
+            this.txtUserEntry.Location = new System.Drawing.Point(363, 72);
             this.txtUserEntry.MaxLength = 1;
             this.txtUserEntry.Name = "txtUserEntry";
             this.txtUserEntry.Size = new System.Drawing.Size(84, 42);
@@ -99,7 +99,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(363, 78);
+            this.listBox1.Location = new System.Drawing.Point(510, 208);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(165, 264);
             this.listBox1.TabIndex = 4;

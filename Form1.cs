@@ -69,11 +69,12 @@ namespace part_8
         {
             var borderStyleTopLeft = ButtonBorderStyle.Outset;
             var borderStyleBottomRight = ButtonBorderStyle.Inset;
-            var borderWidth = 2; //default
+            var borderWidth = 3; //default
             var borderColor = Color.Black;
+
             ControlPaint.DrawBorder(
                                 e.Graphics,
-                                new Rectangle(Location.X, Location.Y, this.Width, this.Height),
+                                new Rectangle(0,0, btnExit.Width, btnExit.Height),
                                 borderColor,//left
                                 borderWidth,
                                 borderStyleTopLeft,
@@ -105,7 +106,7 @@ namespace part_8
             var borderColor = Color.Black;
             ControlPaint.DrawBorder(
                                 e.Graphics,
-                                e.ClipRectangle,
+                                new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height),
                                 borderColor,
                                 borderWidth,
                                 borderStyle,
