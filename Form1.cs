@@ -23,13 +23,13 @@ namespace part_8
         public static extern bool ReleaseCapture();
 
         //set up list for the used characters
-        List<char> usedCharList = new List<char>();
+        List<char> usedChar = new List<char>();
 
         string secretWord = "test";
         public Form1()
         {
             InitializeComponent();
-            listUsedChar.DataSource = usedCharList;
+            listUsedChar.DataSource = usedChar;
         }
 
 
@@ -140,13 +140,13 @@ namespace part_8
         private void lblGameTitle_MouseLeave(object sender, EventArgs e)
         {
 
-            lblGameTitle.ForeColor = Color.Silver;
+            lblGameTitle.ForeColor = Color.FromArgb(119, 176, 65);
         }
 
         private void lblGameTitle_MouseEnter(object sender, EventArgs e)
         {
 
-            lblGameTitle.ForeColor = Color.DarkGray;
+            lblGameTitle.ForeColor = Color.FromArgb(95, 140, 52);
         }
 
         private void txtUserEntry_MouseEnter(object sender, EventArgs e)
@@ -211,7 +211,7 @@ namespace part_8
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            lblGameTitle.ForeColor = Color.FromArgb(119, 176, 65);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -220,11 +220,9 @@ namespace part_8
 
 
 
-            usedCharList.Add(userEntry);
-
-           // usedCharList = null;
-            //usedCharList = listUsedChar.DataSource;
-           // listUsedChar.DataSource = usedCharList;
+            usedChar.Add(userEntry);
+            listUsedChar.DataSource = null;
+            listUsedChar.DataSource = usedChar;
         }
     }
 }

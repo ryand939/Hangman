@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.btnExit = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblGameTitle = new System.Windows.Forms.Label();
             this.txtUserEntry = new System.Windows.Forms.TextBox();
             this.listUsedChar = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,24 +58,12 @@
             this.btnExit.Click += new System.EventHandler(this.button1_Click);
             this.btnExit.Paint += new System.Windows.Forms.PaintEventHandler(this.btnExit_Paint);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::part_8.Properties.Resources.first;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 414);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            // 
             // lblGameTitle
             // 
             this.lblGameTitle.AutoSize = true;
             this.lblGameTitle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameTitle.ForeColor = System.Drawing.Color.Silver;
+            this.lblGameTitle.ForeColor = System.Drawing.Color.SkyBlue;
             this.lblGameTitle.Location = new System.Drawing.Point(359, 22);
             this.lblGameTitle.Name = "lblGameTitle";
             this.lblGameTitle.Size = new System.Drawing.Size(332, 29);
@@ -135,12 +125,35 @@
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             this.btnSubmit.Paint += new System.Windows.Forms.PaintEventHandler(this.btnSubmit_Paint);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::part_8.Properties.Resources.gradient;
+            this.pictureBox2.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(789, 5);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::part_8.Properties.Resources.first;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(317, 414);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtUserEntry);
             this.Controls.Add(this.lblGameTitle);
@@ -154,6 +167,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -169,6 +183,7 @@
         private System.Windows.Forms.ListBox listUsedChar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
