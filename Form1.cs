@@ -22,11 +22,16 @@ namespace part_8
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        
+        //set up list for the used characters
+        List<char> usedCharList = new List<char>();
+
+        string secretWord = "test";
         public Form1()
         {
             InitializeComponent();
+            listUsedChar.DataSource = usedCharList;
         }
+
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -69,7 +74,7 @@ namespace part_8
         {
             var borderStyleTopLeft = ButtonBorderStyle.Outset;
             var borderStyleBottomRight = ButtonBorderStyle.Inset;
-            var borderWidth = 3; //default
+            var borderWidth = 2; //default
             var borderColor = Color.Black;
 
             ControlPaint.DrawBorder(
@@ -152,6 +157,74 @@ namespace part_8
         private void txtUserEntry_MouseLeave(object sender, EventArgs e)
         {
             txtUserEntry.ForeColor = Color.DarkGray;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, panel1.Width, panel1.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+        }
+
+
+
+        private void btnSubmit_Paint(object sender, PaintEventArgs e)
+        {
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, btnSubmit.Width, btnSubmit.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            char userEntry = txtUserEntry.Text[0];
+
+
+
+            usedCharList.Add(userEntry);
+
+           // usedCharList = null;
+            //usedCharList = listUsedChar.DataSource;
+           // listUsedChar.DataSource = usedCharList;
         }
     }
 }

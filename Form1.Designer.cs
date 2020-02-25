@@ -32,7 +32,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblGameTitle = new System.Windows.Forms.Label();
             this.txtUserEntry = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listUsedChar = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSubmit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             this.lblGameTitle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameTitle.ForeColor = System.Drawing.Color.Silver;
-            this.lblGameTitle.Location = new System.Drawing.Point(358, 22);
+            this.lblGameTitle.Location = new System.Drawing.Point(359, 22);
             this.lblGameTitle.Name = "lblGameTitle";
             this.lblGameTitle.Size = new System.Drawing.Size(332, 29);
             this.lblGameTitle.TabIndex = 2;
@@ -87,22 +89,51 @@
             this.txtUserEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserEntry.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserEntry.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtUserEntry.Location = new System.Drawing.Point(363, 72);
+            this.txtUserEntry.Location = new System.Drawing.Point(360, 276);
             this.txtUserEntry.MaxLength = 1;
             this.txtUserEntry.Name = "txtUserEntry";
-            this.txtUserEntry.Size = new System.Drawing.Size(84, 42);
+            this.txtUserEntry.Size = new System.Drawing.Size(37, 42);
             this.txtUserEntry.TabIndex = 3;
             this.txtUserEntry.MouseEnter += new System.EventHandler(this.txtUserEntry_MouseEnter);
             this.txtUserEntry.MouseLeave += new System.EventHandler(this.txtUserEntry_MouseLeave);
             // 
-            // listBox1
+            // listUsedChar
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(510, 208);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(165, 264);
-            this.listBox1.TabIndex = 4;
+            this.listUsedChar.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.listUsedChar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listUsedChar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listUsedChar.FormattingEnabled = true;
+            this.listUsedChar.ItemHeight = 22;
+            this.listUsedChar.Location = new System.Drawing.Point(363, 72);
+            this.listUsedChar.Name = "listUsedChar";
+            this.listUsedChar.Size = new System.Drawing.Size(165, 198);
+            this.listUsedChar.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(360, 70);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(171, 200);
+            this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.BackColor = System.Drawing.Color.DimGray;
+            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSubmit.Location = new System.Drawing.Point(403, 276);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(128, 46);
+            this.btnSubmit.TabIndex = 6;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnSubmit.Paint += new System.Windows.Forms.PaintEventHandler(this.btnSubmit_Paint);
             // 
             // Form1
             // 
@@ -110,14 +141,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtUserEntry);
             this.Controls.Add(this.lblGameTitle);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.listUsedChar);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Part 8: Hangman";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -132,7 +166,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblGameTitle;
         private System.Windows.Forms.TextBox txtUserEntry;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listUsedChar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }
 
