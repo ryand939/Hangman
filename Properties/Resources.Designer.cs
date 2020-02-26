@@ -63,6 +63,36 @@ namespace part_8.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chrome_0pTSFY069o {
+            get {
+                object obj = ResourceManager.GetObject("chrome_0pTSFY069o", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chrome_Bwsyks9cmk {
+            get {
+                object obj = ResourceManager.GetObject("chrome_Bwsyks9cmk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chrome_eQbkOh3eCb {
+            get {
+                object obj = ResourceManager.GetObject("chrome_eQbkOh3eCb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fifth {
             get {
                 object obj = ResourceManager.GetObject("fifth", resourceCulture);

@@ -98,5 +98,14 @@
   <ItemGroup>
     <None Include="Resources\gradient.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chrome_Bwsyks9cmk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chrome_0pTSFY069o.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chrome_eQbkOh3eCb.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -135,19 +135,7 @@ namespace part_8
             }
         }
 
-        
-
-        private void lblGameTitle_MouseLeave(object sender, EventArgs e)
-        {
-
-            lblGameTitle.ForeColor = Color.FromArgb(119, 176, 65);
-        }
-
-        private void lblGameTitle_MouseEnter(object sender, EventArgs e)
-        {
-
-            lblGameTitle.ForeColor = Color.FromArgb(95, 140, 52);
-        }
+       
 
         private void txtUserEntry_MouseEnter(object sender, EventArgs e)
         {
@@ -211,18 +199,126 @@ namespace part_8
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblGameTitle.ForeColor = Color.FromArgb(119, 176, 65);
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if(txtUserEntry.Text != "")
+            {
             char userEntry = txtUserEntry.Text[0];
-
-
-
             usedChar.Add(userEntry);
             listUsedChar.DataSource = null;
             listUsedChar.DataSource = usedChar;
+            }
+        }
+
+        
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, panel2.Width, panel2.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Paint(object sender, PaintEventArgs e) //DROPSHADOW FOR LABEL
+        {
+           Font drawBoldFont = new Font("Verdana", 8, FontStyle.Bold);
+           e.Graphics.DrawString(label1.Text, drawBoldFont,
+           new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, panel5.Width, panel5.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+        }
+
+        private void label2_Paint(object sender, PaintEventArgs e)
+        {
+            Font drawBoldFont = new Font("Verdana", 8, FontStyle.Bold);
+            e.Graphics.DrawString(label2.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+
+        }
+
+        private void lblGameTitle_Paint(object sender, PaintEventArgs e)
+        {
+            Font drawBoldFont = new Font("Verdana", 13, FontStyle.Bold);
+            e.Graphics.DrawString(lblGameTitle.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(179, 226, 46)), -1, -1, StringFormat.GenericDefault);
+
+        }
+
+        private void btnExit_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnExit.Image = null;
+        }
+
+        private void btnExit_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            btnExit.Image = Properties.Resources.chrome_eQbkOh3eCb;
+        }
+
+        private void btnSubmit_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            btnSubmit.Image = null;
+        }
+
+        private void btnSubmit_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            btnSubmit.Image = Properties.Resources.chrome_eQbkOh3eCb;
+        }
+
+        private void listUsedChar_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
