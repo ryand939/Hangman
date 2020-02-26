@@ -25,7 +25,7 @@ namespace part_8
         //set up list for the used characters
         List<char> usedChar = new List<char>();
 
-        string secretWord = "test";
+        string secretWord = "test123";
         public Form1()
         {
             InitializeComponent();
@@ -204,13 +204,27 @@ namespace part_8
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(txtUserEntry.Text != "")
+            bool duplicateChar = false;
+
+            if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
             {
-            char userEntry = txtUserEntry.Text[0];
-            usedChar.Add(userEntry);
-            listUsedChar.DataSource = null;
-            listUsedChar.DataSource = usedChar;
+                for (int x = 0; x < usedChar.Count; x++) //for every item in the list
+                {
+                    if (txtUserEntry.Text[0] == usedChar[x])//check every char that is already in the list
+                    {                                       //check if its a duplicate
+                        duplicateChar = true;               //if it is a duplicate, make duplicatechar true
+                    }
+                }
+                if(duplicateChar == false)
+                {
+                    char userEntry = txtUserEntry.Text[0];
+                    usedChar.Add(userEntry);
+                    listUsedChar.DataSource = null;
+                    listUsedChar.DataSource = usedChar;
+
+                }
             }
+            txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
         }
 
         
@@ -364,6 +378,66 @@ namespace part_8
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void LvlChar1_Paint(object sender, PaintEventArgs e)
+        {
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240,240,240)), -1,-1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar2_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar3_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar4_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar5_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar6_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar7_Paint(object sender, PaintEventArgs e)
+        {
+
+            Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
+            e.Graphics.DrawString(lblChar7.Text, drawBoldFont,
+            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+        }
+
+        private void LblChar2_MouseDown(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
