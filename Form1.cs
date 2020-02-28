@@ -24,23 +24,65 @@ namespace part_8
 
         //set up list for the used characters
         List<char> usedChar = new List<char>();
+        List<Label> hiddenChar = new List<Label>();
 
-        string secretWord = "test123";
+
+
+
+        string secretWord = "test13s";
+        int incorrectCount = 0;
+
         public Form1()
         {
             InitializeComponent();
             listUsedChar.DataSource = usedChar;
+            hiddenChar.Add(lblChar0);
+            hiddenChar.Add(lblChar1);
+            hiddenChar.Add(lblChar2);
+            hiddenChar.Add(lblChar3);
+            hiddenChar.Add(lblChar4);
+            hiddenChar.Add(lblChar5);
+            hiddenChar.Add(lblChar6);
         }
 
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            bool duplicateChar = false;
+
+            if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
             {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                for (int x = 0; x < usedChar.Count; x++) //for every item in the list
+                {
+                    if (txtUserEntry.Text[0] == usedChar[x])//check every char that is already in the list
+                    {                                       //check if its a duplicate
+                        duplicateChar = true;               //if it is a duplicate, make duplicatechar true
+                    }
+                }
+                if(duplicateChar == false)
+                {
+                    char userEntry = txtUserEntry.Text[0];
+                    for (int x = 0; x < secretWord.Length; x++)//for every character in the secret word
+                    {
+                        if(userEntry == secretWord[x])         //check if the secret string contains the character entered
+                        {                                      //if it does, set the label to reveal the specific character
+                            hiddenChar[x].Text = secretWord[x].ToString();
+                            hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y - 6);
+                                                                 //bump the label up a bit just because it looks better
+                        }
+                        else
+                        {
+                            incorrectCount++;
+                        }
+                    }
+                    usedChar.Add(userEntry);
+                    listUsedChar.DataSource = null;
+                    listUsedChar.DataSource = usedChar;
+
+                }
             }
+            txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
         }
+
        
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -94,14 +136,7 @@ namespace part_8
                                 borderStyleBottomRight);
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -126,14 +161,7 @@ namespace part_8
                                 borderStyle = ButtonBorderStyle.Inset); //bottom side
         }
 
-        private void label1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+
 
        
 
@@ -202,30 +230,6 @@ namespace part_8
             
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            bool duplicateChar = false;
-
-            if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
-            {
-                for (int x = 0; x < usedChar.Count; x++) //for every item in the list
-                {
-                    if (txtUserEntry.Text[0] == usedChar[x])//check every char that is already in the list
-                    {                                       //check if its a duplicate
-                        duplicateChar = true;               //if it is a duplicate, make duplicatechar true
-                    }
-                }
-                if(duplicateChar == false)
-                {
-                    char userEntry = txtUserEntry.Text[0];
-                    usedChar.Add(userEntry);
-                    listUsedChar.DataSource = null;
-                    listUsedChar.DataSource = usedChar;
-
-                }
-            }
-            txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
-        }
 
         
 
@@ -296,7 +300,7 @@ namespace part_8
         {
             Font drawBoldFont = new Font("Verdana", 8, FontStyle.Bold);
             e.Graphics.DrawString(label2.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            new SolidBrush(Color.FromArgb(240, 240, 240)), 0, -1, StringFormat.GenericDefault);
 
         }
 
@@ -335,55 +339,11 @@ namespace part_8
         {
         }
 
-        private void panel5_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void listUsedChar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void label2_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void label1_MouseDown_1(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
 
         private void LvlChar1_Paint(object sender, PaintEventArgs e)
         {
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar0.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240,240,240)), -1,-1, StringFormat.GenericDefault);
         }
 
@@ -391,7 +351,7 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
@@ -399,7 +359,7 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
@@ -407,7 +367,7 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
@@ -415,7 +375,7 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
@@ -423,7 +383,7 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
@@ -431,13 +391,17 @@ namespace part_8
         {
 
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar7.Text, drawBoldFont,
+            e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
             new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
         }
 
-        private void LblChar2_MouseDown(object sender, MouseEventArgs e)
+        private void dragAnywhere_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }
