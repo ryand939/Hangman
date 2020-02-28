@@ -27,8 +27,8 @@ namespace part_8
         List<Label> hiddenChar = new List<Label>();
 
 
-
-
+        bool duplicateChar;
+        bool incorrectEntry;
         string secretWord = "test13s";
         int incorrectCount = 0;
 
@@ -47,8 +47,8 @@ namespace part_8
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            bool duplicateChar = false;
-
+            duplicateChar = false;
+            incorrectEntry = true;
             if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
             {
                 for (int x = 0; x < usedChar.Count; x++) //for every item in the list
@@ -67,17 +67,40 @@ namespace part_8
                         {                                      //if it does, set the label to reveal the specific character
                             hiddenChar[x].Text = secretWord[x].ToString();
                             hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y - 6);
-                                                                 //bump the label up a bit just because it looks better
-                        }
-                        else
-                        {
-                            incorrectCount++;
+                                                                //bump the label up a bit just because it looks better
+                            incorrectEntry = false;
                         }
                     }
                     usedChar.Add(userEntry);
                     listUsedChar.DataSource = null;
                     listUsedChar.DataSource = usedChar;
 
+                }
+
+            }
+            if (incorrectEntry == true && duplicateChar == false)
+            {
+                incorrectCount++;
+                switch (incorrectCount)
+                {
+                    case 1:
+                        pictureBox1.Image = Properties.Resources.second;
+                        break;
+                    case 2:
+                        pictureBox1.Image = Properties.Resources.third;
+                        break;
+                    case 3:
+                        pictureBox1.Image = Properties.Resources.fourth;
+                        break;
+                    case 4:
+                        pictureBox1.Image = Properties.Resources.fifth;
+                        break;
+                    case 5:
+                        pictureBox1.Image = Properties.Resources.sixth;
+                        break;
+                    case 6:
+                        pictureBox1.Image = Properties.Resources.seventh;
+                        break;
                 }
             }
             txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored

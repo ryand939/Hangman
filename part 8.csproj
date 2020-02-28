@@ -107,5 +107,38 @@
   <ItemGroup>
     <None Include="Resources\chrome_eQbkOh3eCb.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hangman\10.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
