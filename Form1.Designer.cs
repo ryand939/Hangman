@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.lblGameTitle = new System.Windows.Forms.Label();
 			this.txtUserEntry = new System.Windows.Forms.TextBox();
 			this.listUsedChar = new System.Windows.Forms.ListBox();
@@ -301,6 +302,7 @@
 			// 
 			// pictureBox2
 			// 
+			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
 			this.pictureBox2.Location = new System.Drawing.Point(3, 4);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.pictureBox2.Name = "pictureBox2";
@@ -390,6 +392,7 @@
 			this.Text = "Part 8: Hangman";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			this.panel3.ResumeLayout(false);
@@ -403,7 +406,7 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
-        }
+		}
 
         #endregion
 

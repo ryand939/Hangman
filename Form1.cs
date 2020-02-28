@@ -426,5 +426,6 @@ namespace part_8
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
     }
 }
