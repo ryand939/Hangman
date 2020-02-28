@@ -94,7 +94,7 @@
 			// 
 			this.listUsedChar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.listUsedChar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listUsedChar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listUsedChar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listUsedChar.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.listUsedChar.FormattingEnabled = true;
 			this.listUsedChar.ItemHeight = 14;

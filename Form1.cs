@@ -360,6 +360,7 @@ namespace part_8
 
         private void listUsedChar_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
 
 
