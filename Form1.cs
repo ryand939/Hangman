@@ -76,33 +76,33 @@ namespace part_8
                     listUsedChar.DataSource = usedChar;
 
                 }
-
+                    if (incorrectEntry == true && duplicateChar == false)
+                                {
+                                    incorrectCount++;
+                                    switch (incorrectCount)
+                                    {
+                                        case 1:
+                                            pictureBox1.Image = Properties.Resources.second;
+                                            break;
+                                        case 2:
+                                            pictureBox1.Image = Properties.Resources.third;
+                                            break;
+                                        case 3:
+                                            pictureBox1.Image = Properties.Resources.fourth;
+                                            break;
+                                        case 4:
+                                            pictureBox1.Image = Properties.Resources.fifth;
+                                            break;
+                                        case 5:
+                                            pictureBox1.Image = Properties.Resources.sixth;
+                                            break;
+                                        case 6:
+                                            pictureBox1.Image = Properties.Resources.seventh;
+                                            break;
+                                    }
+                                }
             }
-            if (incorrectEntry == true && duplicateChar == false)
-            {
-                incorrectCount++;
-                switch (incorrectCount)
-                {
-                    case 1:
-                        pictureBox1.Image = Properties.Resources.second;
-                        break;
-                    case 2:
-                        pictureBox1.Image = Properties.Resources.third;
-                        break;
-                    case 3:
-                        pictureBox1.Image = Properties.Resources.fourth;
-                        break;
-                    case 4:
-                        pictureBox1.Image = Properties.Resources.fifth;
-                        break;
-                    case 5:
-                        pictureBox1.Image = Properties.Resources.sixth;
-                        break;
-                    case 6:
-                        pictureBox1.Image = Properties.Resources.seventh;
-                        break;
-                }
-            }
+            
             txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
         }
 

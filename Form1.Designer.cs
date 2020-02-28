@@ -45,11 +45,11 @@
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
+			this.lblAddCharInfo = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.btnSubmit = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.btnExit = new System.Windows.Forms.Button();
-			this.lblAddCharInfo = new System.Windows.Forms.Label();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel4.SuspendLayout();
@@ -287,9 +287,20 @@
 			this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
 			this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
 			// 
+			// lblAddCharInfo
+			// 
+			this.lblAddCharInfo.AutoSize = true;
+			this.lblAddCharInfo.Font = new System.Drawing.Font("Verdana", 8F);
+			this.lblAddCharInfo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.lblAddCharInfo.Location = new System.Drawing.Point(6, 12);
+			this.lblAddCharInfo.Name = "lblAddCharInfo";
+			this.lblAddCharInfo.Size = new System.Drawing.Size(158, 18);
+			this.lblAddCharInfo.TabIndex = 0;
+			this.lblAddCharInfo.Text = "Submit a character to begin";
+			this.lblAddCharInfo.UseCompatibleTextRendering = true;
+			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Image = global::part_8.Properties.Resources.gradient;
 			this.pictureBox2.Location = new System.Drawing.Point(3, 4);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.pictureBox2.Name = "pictureBox2";
@@ -354,18 +365,6 @@
 			this.btnExit.Paint += new System.Windows.Forms.PaintEventHandler(this.btnExit_Paint);
 			this.btnExit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnExit_MouseDown);
 			this.btnExit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnExit_MouseUp);
-			// 
-			// lblAddCharInfo
-			// 
-			this.lblAddCharInfo.AutoSize = true;
-			this.lblAddCharInfo.Font = new System.Drawing.Font("Verdana", 8F);
-			this.lblAddCharInfo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.lblAddCharInfo.Location = new System.Drawing.Point(6, 16);
-			this.lblAddCharInfo.Name = "lblAddCharInfo";
-			this.lblAddCharInfo.Size = new System.Drawing.Size(158, 18);
-			this.lblAddCharInfo.TabIndex = 0;
-			this.lblAddCharInfo.Text = "Submit a character to begin";
-			this.lblAddCharInfo.UseCompatibleTextRendering = true;
 			// 
 			// Form1
 			// 
