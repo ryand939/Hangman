@@ -31,6 +31,11 @@ namespace part_8
         bool incorrectEntry;
         string secretWord = "test13s";
         int incorrectCount = 0;
+        int correctCharCheck = 0;
+        bool gameComplete = false;
+        string winMessage = "Winner!";
+        string loseMessage = "Loser! ";
+        bool paintCharRed = false;
 
         public Form1()
         {
@@ -47,63 +52,95 @@ namespace part_8
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            duplicateChar = false;
-            incorrectEntry = true;
-            if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
+            if (gameComplete == false)
             {
-                for (int x = 0; x < usedChar.Count; x++) //for every item in the list
+                correctCharCheck = 0;
+                duplicateChar = false;
+                incorrectEntry = true;
+                if (txtUserEntry.Text != "" && txtUserEntry.Text != " ") //if userentry is not blank or SPACE
                 {
-                    if (txtUserEntry.Text[0] == usedChar[x])//check every char that is already in the list
-                    {                                       //check if its a duplicate
-                        duplicateChar = true;               //if it is a duplicate, make duplicatechar true
-                    }
-                }
-                if(duplicateChar == false)
-                {
-                    char userEntry = txtUserEntry.Text[0];
-                    for (int x = 0; x < secretWord.Length; x++)//for every character in the secret word
+                    for (int x = 0; x < usedChar.Count; x++) //for every item in the list
                     {
-                        if(userEntry == secretWord[x])         //check if the secret string contains the character entered
-                        {                                      //if it does, set the label to reveal the specific character
-                            hiddenChar[x].Text = secretWord[x].ToString();
-                            hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y - 6);
-                                                                //bump the label up a bit just because it looks better
-                            incorrectEntry = false;
+                        if (txtUserEntry.Text[0] == usedChar[x])//check every char that is already in the list
+                        {                                       //check if its a duplicate
+                            duplicateChar = true;               //if it is a duplicate, make duplicatechar true
                         }
                     }
-                    usedChar.Add(userEntry);
-                    listUsedChar.DataSource = null;
-                    listUsedChar.DataSource = usedChar;
+                    if (duplicateChar == false)
+                    {
+                        char userEntry = txtUserEntry.Text[0];
+                        for (int x = 0; x < secretWord.Length; x++)//for every character in the secret word
+                        {
+                            if (userEntry == secretWord[x])         //check if the secret string contains the character entered
+                            {                                      //if it does, set the label to reveal the specific character
+                                hiddenChar[x].Text = secretWord[x].ToString();
+                                hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y - 6);
+                                //bump the label up a bit just because it looks better
+                                incorrectEntry = false;
+                            }
+                        }
+                        usedChar.Add(userEntry);
+                        listUsedChar.DataSource = null;
+                        listUsedChar.DataSource = usedChar;
 
-                }
+                    }
                     if (incorrectEntry == true && duplicateChar == false)
-                                {
-                                    incorrectCount++;
-                                    switch (incorrectCount)
-                                    {
-                                        case 1:
-                                            pictureBox1.Image = Properties.Resources.second;
-                                            break;
-                                        case 2:
-                                            pictureBox1.Image = Properties.Resources.third;
-                                            break;
-                                        case 3:
-                                            pictureBox1.Image = Properties.Resources.fourth;
-                                            break;
-                                        case 4:
-                                            pictureBox1.Image = Properties.Resources.fifth;
-                                            break;
-                                        case 5:
-                                            pictureBox1.Image = Properties.Resources.sixth;
-                                            break;
-                                        case 6:
-                                            pictureBox1.Image = Properties.Resources.seventh;
-                                            break;
-                                    }
-                                }
+                    {
+                        incorrectCount++;
+                        switch (incorrectCount)
+                        {
+                            case 1:
+                                pictureBox1.Image = Properties.Resources.second;
+                                break;
+                            case 2:
+                                pictureBox1.Image = Properties.Resources.third;
+                                break;
+                            case 3:
+                                pictureBox1.Image = Properties.Resources.fourth;
+                                break;
+                            case 4:
+                                pictureBox1.Image = Properties.Resources.fifth;
+                                break;
+                            case 5:
+                                pictureBox1.Image = Properties.Resources.sixth;
+                                break;
+                            case 6:
+                                pictureBox1.Image = Properties.Resources.seventh;
+                                break;
+                        }
+                    }
+                }
+
+                txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
+
+                //check if the full word has been spelled out
+                for (int x = 0; x < secretWord.Length; x++)
+                {
+                    if (secretWord[x].ToString() == hiddenChar[x].Text)
+                    {
+                        correctCharCheck++;
+                    }
+                }
+                if (correctCharCheck == 7)
+                {
+                    gameComplete = true;
+                    
+                }
+                if(incorrectCount == 6)
+                {
+                    gameComplete = true;
+                    for (int x = 0; x < secretWord.Length; x++) //reveal the remaining characters in red
+                    {
+                        if(hiddenChar[x].Text == "*")
+                        {
+                            paintCharRed = true;
+                            hiddenChar[x].Text = secretWord[x].ToString();
+                        }
+                    }
+                }
             }
             
-            txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
+
         }
 
        
@@ -330,9 +367,8 @@ namespace part_8
         private void lblGameTitle_Paint(object sender, PaintEventArgs e)
         {
             Font drawBoldFont = new Font("Verdana", 13, FontStyle.Bold);
-            e.Graphics.DrawString(lblGameTitle.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(179, 226, 46)), -1, -1, StringFormat.GenericDefault);
-
+                e.Graphics.DrawString(lblGameTitle.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(179, 226, 46)), -1, -1, StringFormat.GenericDefault);
         }
 
         private void btnExit_MouseDown(object sender, MouseEventArgs e)
@@ -367,56 +403,113 @@ namespace part_8
         private void LvlChar1_Paint(object sender, PaintEventArgs e)
         {
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar0.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240,240,240)), -1,-1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar0.Location = new Point(lblChar0.Location.X, lblChar0.Location.Y - 6);
+                e.Graphics.DrawString(lblChar0.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            { 
+                e.Graphics.DrawString(lblChar0.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240,240,240)), -1,-1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar2_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar1.Location = new Point(lblChar1.Location.X, lblChar1.Location.Y - 6);
+                e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar1.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar3_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar2.Location = new Point(lblChar2.Location.X, lblChar2.Location.Y - 6);
+                e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar2.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar4_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar3.Location = new Point(lblChar3.Location.X, lblChar3.Location.Y - 6);
+                e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar3.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar5_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar4.Location = new Point(lblChar4.Location.X, lblChar4.Location.Y - 6);
+                e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar4.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar6_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar5.Location = new Point(lblChar5.Location.X, lblChar5.Location.Y - 6);
+                e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar5.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void LblChar7_Paint(object sender, PaintEventArgs e)
         {
-
             Font drawBoldFont = new Font("Verdana", 15, FontStyle.Bold);
-            e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
-            new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            if (paintCharRed)
+            {
+                lblChar6.Location = new Point(lblChar6.Location.X, lblChar6.Location.Y - 6);
+                e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(196, 13, 0)), -1, -1, StringFormat.GenericDefault);
+            }
+            else
+            {
+                e.Graphics.DrawString(lblChar6.Text, drawBoldFont,
+                new SolidBrush(Color.FromArgb(240, 240, 240)), -1, -1, StringFormat.GenericDefault);
+            }
         }
 
         private void dragAnywhere_MouseDown(object sender, MouseEventArgs e)
