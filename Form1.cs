@@ -25,16 +25,21 @@ namespace part_8
         //set up list for the used characters
         List<char> usedChar = new List<char>();
         List<Label> hiddenChar = new List<Label>();
+        List<string> wordList = new List<string>();
+
+
 
 
         bool duplicateChar;
         bool incorrectEntry;
-        string secretWord = "test13s";
+        string secretWord;
         int totalEntries = 0;
         int incorrectCount = 0;
         int correctCharCheck = 0;
         bool gameComplete = false; 
         bool paintCharRed = false;
+
+
 
         public Form1()
         {
@@ -47,6 +52,13 @@ namespace part_8
             hiddenChar.Add(lblChar4);
             hiddenChar.Add(lblChar5);
             hiddenChar.Add(lblChar6);
+            wordList.InsertRange(wordList.Count, new string[] { "revenge", "problem", "harmony", "nothing", "morning", 
+                                                                "history", "dolphin", "teacher", "forever", "welcome",
+                                                                "hundred","someone","diamond","however"});
+            Random random = new Random();
+            int number = random.Next(0, wordList.Count);
+            secretWord = wordList[number];
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -600,6 +612,7 @@ namespace part_8
             lblCorrect.Text = "Press \"New Game\" for a ";
             lblIncorrect.Text = "new word!";
             lblRemainingGuess.Text = "";
+  
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
@@ -611,6 +624,9 @@ namespace part_8
                     hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y + 6);
                 }
             }
+            Random random = new Random();
+            int number = random.Next(0, wordList.Count);
+            secretWord = wordList[number];
             gameComplete = false;
             paintCharRed = false;
             totalEntries = 0;
