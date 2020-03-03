@@ -30,11 +30,10 @@ namespace part_8
         bool duplicateChar;
         bool incorrectEntry;
         string secretWord = "test13s";
+        int totalEntries = 0;
         int incorrectCount = 0;
         int correctCharCheck = 0;
-        bool gameComplete = false;
-        string winMessage = "Winner!";
-        string loseMessage = "Loser! ";
+        bool gameComplete = false; 
         bool paintCharRed = false;
 
         public Form1()
@@ -79,36 +78,38 @@ namespace part_8
                                 incorrectEntry = false;
                             }
                         }
+                        if (incorrectEntry == true)
+                        {
+                            incorrectCount++;
+                            switch (incorrectCount)
+                            {
+                                case 1:
+                                    pictureBox1.Image = Properties.Resources.second;
+                                    break;
+                                case 2:
+                                    pictureBox1.Image = Properties.Resources.third;
+                                    break;
+                                case 3:
+                                    pictureBox1.Image = Properties.Resources.fourth;
+                                    break;
+                                case 4:
+                                    pictureBox1.Image = Properties.Resources.fifth;
+                                    break;
+                                case 5:
+                                    pictureBox1.Image = Properties.Resources.sixth;
+                                    break;
+                                case 6:
+                                    pictureBox1.Image = Properties.Resources.seventh;
+                                    break;
+                            }
+                        }
+                        totalEntries++;
                         usedChar.Add(userEntry);
                         listUsedChar.DataSource = null;
                         listUsedChar.DataSource = usedChar;
 
                     }
-                    if (incorrectEntry == true && duplicateChar == false)
-                    {
-                        incorrectCount++;
-                        switch (incorrectCount)
-                        {
-                            case 1:
-                                pictureBox1.Image = Properties.Resources.second;
-                                break;
-                            case 2:
-                                pictureBox1.Image = Properties.Resources.third;
-                                break;
-                            case 3:
-                                pictureBox1.Image = Properties.Resources.fourth;
-                                break;
-                            case 4:
-                                pictureBox1.Image = Properties.Resources.fifth;
-                                break;
-                            case 5:
-                                pictureBox1.Image = Properties.Resources.sixth;
-                                break;
-                            case 6:
-                                pictureBox1.Image = Properties.Resources.seventh;
-                                break;
-                        }
-                    }
+                    
                 }
 
                 txtUserEntry.Text = ""; //delete the entry AFTER it has been added or ignored
@@ -116,15 +117,24 @@ namespace part_8
                 //check if the full word has been spelled out
                 for (int x = 0; x < secretWord.Length; x++)
                 {
-                    if (secretWord[x].ToString() == hiddenChar[x].Text)
+                    if (hiddenChar[x].Text== secretWord[x].ToString() )
                     {
                         correctCharCheck++;
                     }
                 }
+                lblAddCharInfo.Text = $"Entries: {totalEntries}";
+                lblCorrect.Text = $"Correct: {correctCharCheck}";
+                lblIncorrect.Text = $"Incorrect: {incorrectCount}";
+                lblRemainingGuess.Text = $"Remaining Attempts: {6 - incorrectCount}";
                 if (correctCharCheck == 7)
                 {
                     gameComplete = true;
-                    
+
+                    lblAddCharInfo.Text = $"{secretWord}, you got it!";
+                    lblCorrect.Text = "Press \"New Game\" for a ";
+                    lblIncorrect.Text = "new word!";
+                    lblRemainingGuess.Text = "";
+
                 }
                 if(incorrectCount == 6)
                 {
@@ -135,8 +145,15 @@ namespace part_8
                         {
                             paintCharRed = true;
                             hiddenChar[x].Text = secretWord[x].ToString();
+                            //paintCharRed = false; //changed text colour red, made it repaint
+                                                  //selected keys, then changed it back.
                         }
                     }
+
+                    lblAddCharInfo.Text = $"The word was: {secretWord}";
+                    lblCorrect.Text = "Press \"New Game\" for a ";
+                    lblIncorrect.Text = "new word!";
+                    lblRemainingGuess.Text = "";
                 }
             }
             
@@ -521,5 +538,98 @@ namespace part_8
             }
         }
 
+        private void button2_Paint(object sender, PaintEventArgs e)
+        {
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, btnReveal.Width, btnReveal.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+
+        }
+
+        private void btnNewGame_Paint(object sender, PaintEventArgs e)
+        {
+            var borderStyleTopLeft = ButtonBorderStyle.Outset;
+            var borderStyleBottomRight = ButtonBorderStyle.Inset;
+            var borderWidth = 2; //default
+            var borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(
+                                e.Graphics,
+                                new Rectangle(0, 0, btnNewGame.Width, btnNewGame.Height),
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//top
+                                borderWidth,
+                                borderStyleTopLeft,
+                                borderColor,//right
+                                borderWidth,
+                                borderStyleBottomRight,
+                                borderColor,//left
+                                borderWidth,
+                                borderStyleBottomRight);
+
+        }
+
+        private void btnReveal_Click(object sender, EventArgs e)
+        {
+            for(int x = 0; x < secretWord.Length; x++)
+            {
+                paintCharRed = true;
+                hiddenChar[x].Text = secretWord[x].ToString();
+                gameComplete = true;
+            }
+            lblAddCharInfo.Text = $"The word was: {secretWord}";
+            lblCorrect.Text = "Press \"New Game\" for a ";
+            lblIncorrect.Text = "new word!";
+            lblRemainingGuess.Text = "";
+        }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            for (int x = 0; x < secretWord.Length; x++)
+            { 
+                if(hiddenChar[x].Text != "*")
+                {
+                    hiddenChar[x].Location = new Point(hiddenChar[x].Location.X, hiddenChar[x].Location.Y + 6);
+                }
+            }
+            gameComplete = false;
+            paintCharRed = false;
+            totalEntries = 0;
+            incorrectCount = 0;
+            correctCharCheck = 0;
+            lblAddCharInfo.Text = "Submit a character to begin.";
+            lblCorrect.Text = "";
+            lblIncorrect.Text = "";
+            lblRemainingGuess.Text = "";
+            pictureBox1.Image = Properties.Resources.first;
+            usedChar.Clear();
+            listUsedChar.DataSource = null;
+            listUsedChar.DataSource = usedChar;
+            
+            for(int x = 0; x < secretWord.Length; x++)
+            {
+                hiddenChar[x].Text = "*";
+            }
+
+        }
     }
 }
