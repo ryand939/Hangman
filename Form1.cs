@@ -141,7 +141,8 @@ namespace part_8
                 if (correctCharCheck == 7)
                 {
                     gameComplete = true;
-
+                    btnSubmit.Enabled = false;
+                    btnReveal.Enabled = false;
                     lblAddCharInfo.Text = $"{secretWord}, you got it!";
                     lblCorrect.Text = "Press \"New Game\" for a ";
                     lblIncorrect.Text = "new word!";
@@ -151,6 +152,7 @@ namespace part_8
                 if(incorrectCount == 6)
                 {
                     gameComplete = true;
+                    btnSubmit.Enabled = false;
                     for (int x = 0; x < secretWord.Length; x++) //reveal the remaining characters in red
                     {
                         if(hiddenChar[x].Text == "*")
@@ -608,6 +610,7 @@ namespace part_8
                 hiddenChar[x].Text = secretWord[x].ToString();
                 gameComplete = true;
             }
+            btnSubmit.Enabled = false;
             lblAddCharInfo.Text = $"The word was: {secretWord}";
             lblCorrect.Text = "Press \"New Game\" for a ";
             lblIncorrect.Text = "new word!";
@@ -627,12 +630,14 @@ namespace part_8
             Random random = new Random();
             int number = random.Next(0, wordList.Count);
             secretWord = wordList[number];
+            btnSubmit.Enabled = true;
+            btnReveal.Enabled = true;
             gameComplete = false;
             paintCharRed = false;
             totalEntries = 0;
             incorrectCount = 0;
             correctCharCheck = 0;
-            lblAddCharInfo.Text = "Submit a character to begin.";
+            lblAddCharInfo.Text = "Submit a character to begin";
             lblCorrect.Text = "";
             lblIncorrect.Text = "";
             lblRemainingGuess.Text = "";
@@ -646,6 +651,29 @@ namespace part_8
                 hiddenChar[x].Text = "*";
             }
 
+        }
+
+        private void btnReveal_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnReveal.Image = null;
+        }
+
+        private void btnReveal_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            btnReveal.Image = Properties.Resources.chrome_eQbkOh3eCb;
+        }
+
+        private void btnNewGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnNewGame.Image = null;
+
+        }
+
+        private void btnNewGame_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            btnNewGame.Image = Properties.Resources.chrome_eQbkOh3eCb;
         }
     }
 }

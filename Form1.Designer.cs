@@ -46,14 +46,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblRemainingGuess = new System.Windows.Forms.Label();
+            this.lblIncorrect = new System.Windows.Forms.Label();
+            this.lblCorrect = new System.Windows.Forms.Label();
             this.lblAddCharInfo = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lblCorrect = new System.Windows.Forms.Label();
-            this.lblIncorrect = new System.Windows.Forms.Label();
-            this.lblRemainingGuess = new System.Windows.Forms.Label();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.btnReveal = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
@@ -70,10 +70,9 @@
             this.lblGameTitle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Bold);
             this.lblGameTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblGameTitle.Location = new System.Drawing.Point(230, 14);
-            this.lblGameTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGameTitle.Location = new System.Drawing.Point(345, 22);
             this.lblGameTitle.Name = "lblGameTitle";
-            this.lblGameTitle.Size = new System.Drawing.Size(245, 27);
+            this.lblGameTitle.Size = new System.Drawing.Size(367, 38);
             this.lblGameTitle.TabIndex = 2;
             this.lblGameTitle.Text = "Part 8 ICS4U: Hangman";
             this.lblGameTitle.UseCompatibleTextRendering = true;
@@ -86,11 +85,10 @@
             this.txtUserEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserEntry.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserEntry.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtUserEntry.Location = new System.Drawing.Point(233, 181);
-            this.txtUserEntry.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserEntry.Location = new System.Drawing.Point(350, 278);
             this.txtUserEntry.MaxLength = 1;
             this.txtUserEntry.Name = "txtUserEntry";
-            this.txtUserEntry.Size = new System.Drawing.Size(25, 30);
+            this.txtUserEntry.Size = new System.Drawing.Size(36, 42);
             this.txtUserEntry.TabIndex = 3;
             this.txtUserEntry.MouseEnter += new System.EventHandler(this.txtUserEntry_MouseEnter);
             this.txtUserEntry.MouseLeave += new System.EventHandler(this.txtUserEntry_MouseLeave);
@@ -102,21 +100,19 @@
             this.listUsedChar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listUsedChar.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.listUsedChar.FormattingEnabled = true;
-            this.listUsedChar.ItemHeight = 14;
-            this.listUsedChar.Location = new System.Drawing.Point(235, 49);
-            this.listUsedChar.Margin = new System.Windows.Forms.Padding(2);
+            this.listUsedChar.ItemHeight = 22;
+            this.listUsedChar.Location = new System.Drawing.Point(352, 75);
             this.listUsedChar.Name = "listUsedChar";
-            this.listUsedChar.Size = new System.Drawing.Size(98, 98);
+            this.listUsedChar.Size = new System.Drawing.Size(147, 198);
             this.listUsedChar.TabIndex = 4;
             this.listUsedChar.SelectedIndexChanged += new System.EventHandler(this.listUsedChar_SelectedIndexChanged);
             this.listUsedChar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(233, 47);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(350, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(103, 130);
+            this.panel1.Size = new System.Drawing.Size(154, 200);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -129,9 +125,10 @@
             this.panel2.Controls.Add(this.lblChar3);
             this.panel2.Controls.Add(this.lblChar2);
             this.panel2.Controls.Add(this.lblChar0);
-            this.panel2.Location = new System.Drawing.Point(233, 222);
+            this.panel2.Location = new System.Drawing.Point(350, 342);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(287, 59);
+            this.panel2.Size = new System.Drawing.Size(430, 91);
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
@@ -141,9 +138,10 @@
             this.lblChar1.AutoSize = true;
             this.lblChar1.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar1.Location = new System.Drawing.Point(57, 21);
+            this.lblChar1.Location = new System.Drawing.Point(86, 32);
+            this.lblChar1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar1.Name = "lblChar1";
-            this.lblChar1.Size = new System.Drawing.Size(22, 30);
+            this.lblChar1.Size = new System.Drawing.Size(32, 44);
             this.lblChar1.TabIndex = 6;
             this.lblChar1.Text = "*";
             this.lblChar1.UseCompatibleTextRendering = true;
@@ -155,9 +153,10 @@
             this.lblChar6.AutoSize = true;
             this.lblChar6.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar6.Location = new System.Drawing.Point(247, 21);
+            this.lblChar6.Location = new System.Drawing.Point(370, 32);
+            this.lblChar6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar6.Name = "lblChar6";
-            this.lblChar6.Size = new System.Drawing.Size(22, 30);
+            this.lblChar6.Size = new System.Drawing.Size(32, 44);
             this.lblChar6.TabIndex = 5;
             this.lblChar6.Text = "*";
             this.lblChar6.UseCompatibleTextRendering = true;
@@ -169,9 +168,10 @@
             this.lblChar5.AutoSize = true;
             this.lblChar5.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar5.Location = new System.Drawing.Point(209, 21);
+            this.lblChar5.Location = new System.Drawing.Point(314, 32);
+            this.lblChar5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar5.Name = "lblChar5";
-            this.lblChar5.Size = new System.Drawing.Size(22, 30);
+            this.lblChar5.Size = new System.Drawing.Size(32, 44);
             this.lblChar5.TabIndex = 4;
             this.lblChar5.Text = "*";
             this.lblChar5.UseCompatibleTextRendering = true;
@@ -183,9 +183,10 @@
             this.lblChar4.AutoSize = true;
             this.lblChar4.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar4.Location = new System.Drawing.Point(171, 21);
+            this.lblChar4.Location = new System.Drawing.Point(256, 32);
+            this.lblChar4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar4.Name = "lblChar4";
-            this.lblChar4.Size = new System.Drawing.Size(22, 30);
+            this.lblChar4.Size = new System.Drawing.Size(32, 44);
             this.lblChar4.TabIndex = 3;
             this.lblChar4.Text = "*";
             this.lblChar4.UseCompatibleTextRendering = true;
@@ -197,9 +198,10 @@
             this.lblChar3.AutoSize = true;
             this.lblChar3.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar3.Location = new System.Drawing.Point(133, 21);
+            this.lblChar3.Location = new System.Drawing.Point(200, 32);
+            this.lblChar3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar3.Name = "lblChar3";
-            this.lblChar3.Size = new System.Drawing.Size(22, 30);
+            this.lblChar3.Size = new System.Drawing.Size(32, 44);
             this.lblChar3.TabIndex = 2;
             this.lblChar3.Text = "*";
             this.lblChar3.UseCompatibleTextRendering = true;
@@ -211,9 +213,10 @@
             this.lblChar2.AutoSize = true;
             this.lblChar2.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar2.Location = new System.Drawing.Point(95, 21);
+            this.lblChar2.Location = new System.Drawing.Point(142, 32);
+            this.lblChar2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar2.Name = "lblChar2";
-            this.lblChar2.Size = new System.Drawing.Size(22, 30);
+            this.lblChar2.Size = new System.Drawing.Size(32, 44);
             this.lblChar2.TabIndex = 1;
             this.lblChar2.Text = "*";
             this.lblChar2.UseCompatibleTextRendering = true;
@@ -225,9 +228,10 @@
             this.lblChar0.AutoSize = true;
             this.lblChar0.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar0.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChar0.Location = new System.Drawing.Point(19, 21);
+            this.lblChar0.Location = new System.Drawing.Point(28, 32);
+            this.lblChar0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChar0.Name = "lblChar0";
-            this.lblChar0.Size = new System.Drawing.Size(22, 30);
+            this.lblChar0.Size = new System.Drawing.Size(32, 44);
             this.lblChar0.TabIndex = 0;
             this.lblChar0.Text = "*";
             this.lblChar0.UseCompatibleTextRendering = true;
@@ -240,9 +244,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(1, 4);
+            this.label1.Location = new System.Drawing.Point(2, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 18);
+            this.label1.Size = new System.Drawing.Size(126, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Hidden Word";
             this.label1.UseCompatibleTextRendering = true;
@@ -253,17 +258,19 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(245, 212);
+            this.panel3.Location = new System.Drawing.Point(368, 326);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(88, 20);
+            this.panel3.Size = new System.Drawing.Size(132, 31);
             this.panel3.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(357, 37);
+            this.panel4.Location = new System.Drawing.Point(536, 57);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 21);
+            this.panel4.Size = new System.Drawing.Size(123, 32);
             this.panel4.TabIndex = 3;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
             // 
@@ -273,10 +280,11 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1, 4);
+            this.label2.Location = new System.Drawing.Point(2, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.label2.Size = new System.Drawing.Size(120, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Information";
             this.label2.UseCompatibleTextRendering = true;
@@ -289,21 +297,62 @@
             this.panel5.Controls.Add(this.lblIncorrect);
             this.panel5.Controls.Add(this.lblCorrect);
             this.panel5.Controls.Add(this.lblAddCharInfo);
-            this.panel5.Location = new System.Drawing.Point(345, 47);
+            this.panel5.Location = new System.Drawing.Point(518, 72);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(174, 137);
+            this.panel5.Size = new System.Drawing.Size(261, 211);
             this.panel5.TabIndex = 4;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dragAnywhere_MouseDown);
+            // 
+            // lblRemainingGuess
+            // 
+            this.lblRemainingGuess.AutoSize = true;
+            this.lblRemainingGuess.Font = new System.Drawing.Font("Verdana", 8F);
+            this.lblRemainingGuess.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblRemainingGuess.Location = new System.Drawing.Point(9, 102);
+            this.lblRemainingGuess.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRemainingGuess.Name = "lblRemainingGuess";
+            this.lblRemainingGuess.Size = new System.Drawing.Size(16, 25);
+            this.lblRemainingGuess.TabIndex = 3;
+            this.lblRemainingGuess.Text = "\r\n";
+            this.lblRemainingGuess.UseCompatibleTextRendering = true;
+            // 
+            // lblIncorrect
+            // 
+            this.lblIncorrect.AutoSize = true;
+            this.lblIncorrect.Font = new System.Drawing.Font("Verdana", 8F);
+            this.lblIncorrect.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblIncorrect.Location = new System.Drawing.Point(9, 74);
+            this.lblIncorrect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIncorrect.Name = "lblIncorrect";
+            this.lblIncorrect.Size = new System.Drawing.Size(16, 25);
+            this.lblIncorrect.TabIndex = 2;
+            this.lblIncorrect.Text = "\r\n";
+            this.lblIncorrect.UseCompatibleTextRendering = true;
+            // 
+            // lblCorrect
+            // 
+            this.lblCorrect.AutoSize = true;
+            this.lblCorrect.Font = new System.Drawing.Font("Verdana", 8F);
+            this.lblCorrect.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCorrect.Location = new System.Drawing.Point(9, 46);
+            this.lblCorrect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCorrect.Name = "lblCorrect";
+            this.lblCorrect.Size = new System.Drawing.Size(16, 25);
+            this.lblCorrect.TabIndex = 1;
+            this.lblCorrect.Text = "\r\n";
+            this.lblCorrect.UseCompatibleTextRendering = true;
             // 
             // lblAddCharInfo
             // 
             this.lblAddCharInfo.AutoSize = true;
             this.lblAddCharInfo.Font = new System.Drawing.Font("Verdana", 8F);
             this.lblAddCharInfo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblAddCharInfo.Location = new System.Drawing.Point(6, 12);
+            this.lblAddCharInfo.Location = new System.Drawing.Point(9, 18);
+            this.lblAddCharInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddCharInfo.Name = "lblAddCharInfo";
-            this.lblAddCharInfo.Size = new System.Drawing.Size(158, 18);
+            this.lblAddCharInfo.Size = new System.Drawing.Size(237, 25);
             this.lblAddCharInfo.TabIndex = 0;
             this.lblAddCharInfo.Text = "Submit a character to begin";
             this.lblAddCharInfo.UseCompatibleTextRendering = true;
@@ -311,10 +360,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(526, 3);
+            this.pictureBox2.Size = new System.Drawing.Size(789, 5);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -329,10 +377,9 @@
             this.btnSubmit.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSubmit.Image = global::part_8.Properties.Resources.chrome_eQbkOh3eCb;
-            this.btnSubmit.Location = new System.Drawing.Point(262, 181);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmit.Location = new System.Drawing.Point(393, 278);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(74, 30);
+            this.btnSubmit.Size = new System.Drawing.Size(111, 46);
             this.btnSubmit.TabIndex = 6;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -344,10 +391,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::part_8.Properties.Resources.first;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 18);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(211, 269);
+            this.pictureBox1.Size = new System.Drawing.Size(316, 414);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -364,10 +410,9 @@
             this.btnExit.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.Image = global::part_8.Properties.Resources.chrome_eQbkOh3eCb;
-            this.btnExit.Location = new System.Drawing.Point(470, 12);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Location = new System.Drawing.Point(705, 18);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(50, 23);
+            this.btnExit.Size = new System.Drawing.Size(75, 35);
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -375,42 +420,6 @@
             this.btnExit.Paint += new System.Windows.Forms.PaintEventHandler(this.btnExit_Paint);
             this.btnExit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnExit_MouseDown);
             this.btnExit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnExit_MouseUp);
-            // 
-            // lblCorrect
-            // 
-            this.lblCorrect.AutoSize = true;
-            this.lblCorrect.Font = new System.Drawing.Font("Verdana", 8F);
-            this.lblCorrect.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCorrect.Location = new System.Drawing.Point(6, 30);
-            this.lblCorrect.Name = "lblCorrect";
-            this.lblCorrect.Size = new System.Drawing.Size(11, 18);
-            this.lblCorrect.TabIndex = 1;
-            this.lblCorrect.Text = "\r\n";
-            this.lblCorrect.UseCompatibleTextRendering = true;
-            // 
-            // lblIncorrect
-            // 
-            this.lblIncorrect.AutoSize = true;
-            this.lblIncorrect.Font = new System.Drawing.Font("Verdana", 8F);
-            this.lblIncorrect.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblIncorrect.Location = new System.Drawing.Point(6, 48);
-            this.lblIncorrect.Name = "lblIncorrect";
-            this.lblIncorrect.Size = new System.Drawing.Size(11, 18);
-            this.lblIncorrect.TabIndex = 2;
-            this.lblIncorrect.Text = "\r\n";
-            this.lblIncorrect.UseCompatibleTextRendering = true;
-            // 
-            // lblRemainingGuess
-            // 
-            this.lblRemainingGuess.AutoSize = true;
-            this.lblRemainingGuess.Font = new System.Drawing.Font("Verdana", 8F);
-            this.lblRemainingGuess.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblRemainingGuess.Location = new System.Drawing.Point(6, 66);
-            this.lblRemainingGuess.Name = "lblRemainingGuess";
-            this.lblRemainingGuess.Size = new System.Drawing.Size(11, 18);
-            this.lblRemainingGuess.TabIndex = 3;
-            this.lblRemainingGuess.Text = "\r\n";
-            this.lblRemainingGuess.UseCompatibleTextRendering = true;
             // 
             // btnNewGame
             // 
@@ -422,15 +431,16 @@
             this.btnNewGame.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewGame.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnNewGame.Image = global::part_8.Properties.Resources.chrome_eQbkOh3eCb;
-            this.btnNewGame.Location = new System.Drawing.Point(430, 188);
-            this.btnNewGame.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewGame.Location = new System.Drawing.Point(645, 289);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(88, 23);
+            this.btnNewGame.Size = new System.Drawing.Size(132, 35);
             this.btnNewGame.TabIndex = 8;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             this.btnNewGame.Paint += new System.Windows.Forms.PaintEventHandler(this.btnNewGame_Paint);
+            this.btnNewGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnNewGame_MouseDown);
+            this.btnNewGame.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnNewGame_MouseUp);
             // 
             // btnReveal
             // 
@@ -442,22 +452,23 @@
             this.btnReveal.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReveal.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnReveal.Image = global::part_8.Properties.Resources.chrome_eQbkOh3eCb;
-            this.btnReveal.Location = new System.Drawing.Point(345, 188);
-            this.btnReveal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReveal.Location = new System.Drawing.Point(518, 289);
             this.btnReveal.Name = "btnReveal";
-            this.btnReveal.Size = new System.Drawing.Size(79, 23);
+            this.btnReveal.Size = new System.Drawing.Size(118, 35);
             this.btnReveal.TabIndex = 9;
             this.btnReveal.Text = "Reveal";
             this.btnReveal.UseVisualStyleBackColor = false;
             this.btnReveal.Click += new System.EventHandler(this.btnReveal_Click);
             this.btnReveal.Paint += new System.Windows.Forms.PaintEventHandler(this.button2_Paint);
+            this.btnReveal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnReveal_MouseDown);
+            this.btnReveal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnReveal_MouseUp);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.btnReveal);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.panel4);
@@ -473,7 +484,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblGameTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Part 8: Hangman";
             this.Load += new System.EventHandler(this.Form1_Load);
