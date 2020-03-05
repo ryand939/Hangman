@@ -675,5 +675,36 @@ namespace part_8
 
             btnNewGame.Image = Properties.Resources.chrome_eQbkOh3eCb;
         }
+
+        private void ListUsedChar_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            var myFont = new Font("Verdana", 8, FontStyle.Bold);
+            bool isItemSelected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected);
+            int itemIndex = e.Index;
+            if (itemIndex >= 0 && itemIndex < listUsedChar.Items.Count)
+            {
+                Graphics g = e.Graphics;
+
+                // Background Color (condition) ? [true path] : [false path];
+                SolidBrush backgroundColorBrush = new SolidBrush((isItemSelected) ? Color.FromArgb(82,82,82) : Color.FromArgb(64,64,64));
+                g.FillRectangle(backgroundColorBrush, e.Bounds);
+
+                // Set text color
+                string itemText = listUsedChar.Items[itemIndex].ToString();
+
+
+                // (condition) ? [true path] : [false path]; -> changes colour depending on what is selected
+                SolidBrush itemTextColorBrush = (isItemSelected) ? new SolidBrush(Color.FromArgb(179, 226, 46)) : new SolidBrush(Color.FromArgb(240, 240, 240));
+                g.DrawString(itemText, myFont, itemTextColorBrush, listUsedChar.GetItemRectangle(itemIndex).Location);
+
+                // Clean up
+                backgroundColorBrush.Dispose();
+                itemTextColorBrush.Dispose();
+            }
+
+            e.DrawFocusRectangle();
+
+        }
     }
 }
